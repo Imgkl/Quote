@@ -16,6 +16,13 @@ class MyApp extends StatelessWidget {
       color: greyColor,
       debugShowCheckedModeBanner: false,
       title: 'Quotes.',
+      builder: (BuildContext context, Widget widget) {
+         ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
+           return getErrorWidget(context, errorDetails);
+         };
+
+         return widget;
+       },
       theme: ThemeData(primarySwatch: Colors.deepPurple),
       home: MyHomePage(
         title: 'quotes.',
@@ -144,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   var quote = json.decode(snapshot.data.toString());
                   PageController controller = PageController();
                   return new PageView.builder(
-                    itemCount: quote.length,
+                    
                     itemBuilder: (BuildContext context, int index) {
                       return new PageView(
                         controller: controller,
@@ -158,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: Text(
                                     "" + quote[index]['Quote'],
                                     style: TextStyle(
-                                      fontSize: 35,
+                                      fontSize: 30,
                                       color: Colors.white,
                                       fontFamily: "fontaa",
                                       fontWeight: FontWeight.bold,
@@ -233,4 +240,14 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+Widget getErrorWidget(BuildContext context, FlutterErrorDetails error) {
+  return Center(
+    child: Text(
+      "Quotes Loading.",
+      style: TextStyle(fontFamily: "fontaa",fontSize: 45,color: Colors.white, fontWeight: FontWeight.bold),
+    
+    ),
+  );
 }
