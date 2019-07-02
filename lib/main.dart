@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'gradients.dart';
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             new Stack(
               children: <Widget>[
-                Container(
+                new Container(
                   color: greyColor,
                 )
               ],
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     gradient: yellowOrangeGradient, shape: BoxShape.circle),
               ),
             ),
-            Padding(
+            new Padding(
               padding: const EdgeInsets.only(left: 30.0, top: 100),
               child: new Container(
                 child: Text(
@@ -143,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
             new Positioned(
               top: 300,
               left: 45,
-              child: Container(
+              child: new Container(
                 width: 355,
                 height: 455,
                 child: new FutureBuilder(
@@ -157,11 +157,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         return new PageView(
                           controller: controller,
                           children: <Widget>[
-                            Container(
+                            new Container(
                               child: new Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Padding(
+                                  new Padding(
                                     padding: const EdgeInsets.only(left: 19),
                                     child: Text(
                                       "" + quote[index]['Quote'],
@@ -197,17 +197,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            Padding(
+            new Padding(
               padding: const EdgeInsets.only(top: 880, left: 100),
               child: Container(
                 width: 90,
                 height: 50,
-                child: RaisedButton(
+                child: new RaisedButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
                   elevation: 10,
                   color: Colors.black,
-                  child: Icon(
+                  child: new Icon(
                     Icons.panorama_fish_eye,
                     color: Colors.white,
                   ),
@@ -234,7 +234,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      //TOOD: Add and View bookmark Option
+                      //TODO: Add and View bookmark Option
                     },
                     splashColor: Colors.red.shade400,
                   ),
@@ -250,13 +250,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
 Widget getErrorWidget(BuildContext context, FlutterErrorDetails error) {
   return Center(
-    child: Text(
-      "Quotes Loading.",
-      style: TextStyle(
-          fontFamily: "fontaa",
-          fontSize: 45,
-          color: Colors.white,
-          fontWeight: FontWeight.bold),
+    child: SpinKitPulse(
+      color: Colors.white,
+      size: 110.0,
     ),
   );
 }
