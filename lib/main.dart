@@ -142,52 +142,90 @@ class _MyHomePageState extends State<MyHomePage> {
                     .loadString('json/quotes.json'),
                 builder: (context, snapshot) {
                   var quote = json.decode(snapshot.data.toString());
-
+                  PageController controller = PageController();
                   return new PageView.builder(
                     itemCount: quote.length,
-                    controller: PageController(
-                      viewportFraction: 0.85  ,
-                      initialPage: 0,
-                    ),
                     itemBuilder: (BuildContext context, int index) {
-                      return new Card(
-                        elevation: 10,
-                        color: cardColor,
-                        child: Container(
-                          child: new Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(left: 19),
-                                child: Text(
-                                  "" + quote[index]['Quote'],
-                                  style: TextStyle(
-                                    fontSize: 35,
-                                    color: Colors.white,
-                                    fontFamily: "fontaa",
-                                    fontWeight: FontWeight.bold,
-                                    letterSpacing: 2.25,
+                      return new PageView(
+                        controller: controller,
+                        children: <Widget>[
+                          Container(
+                            child: new Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 19),
+                                  child: Text(
+                                    "" + quote[index]['Quote'],
+                                    style: TextStyle(
+                                      fontSize: 35,
+                                      color: Colors.white,
+                                      fontFamily: "fontaa",
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 2.25,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 195.0, top: 25),
-                                child: Text(
-                                  "-" + quote[index]['Author'],
-                                  style: TextStyle(
-                                    letterSpacing: 1,
-                                    color: Colors.white,
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 195.0, top: 25),
+                                  child: Text(
+                                    "-" + quote[index]['Author'],
+                                    style: TextStyle(
+                                      letterSpacing: 1,
+                                      color: Colors.white.withOpacity(0.50),
+                                    ),
                                   ),
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
-                        ),
+                        ],
                       );
                     },
+                    physics: BouncingScrollPhysics(),
                   );
                 },
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 880, left: 100),
+            child: Container(
+              width: 90,
+              height: 50,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                elevation: 10,
+                color: Colors.black,
+                child: Icon(
+                  Icons.panorama_fish_eye,
+                  color: Colors.white,
+                ),
+                onPressed: () {},
+                splashColor: Colors.yellow.shade400,
+              ),
+            ),
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 880, left: 150, bottom: 50),
+              child: Container(
+                width: 90,
+                height: 50,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  elevation: 10,
+                  color: Colors.black,
+                  child: Icon(
+                    Icons.bookmark_border,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {},
+                  splashColor: Colors.red.shade400,
+                ),
               ),
             ),
           ),
