@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-  final int index = Random().nextInt(4);
   final String title;
 
   @override
@@ -42,6 +41,20 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List data;
+ var _index;
+
+@override
+  void initState() {
+    super.initState();
+    _random();
+  }
+
+void _random() {
+setState(() {
+  _index = Random(_index).nextInt(3000);
+});
+
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -151,11 +164,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       .loadString('json/quotes.json'),
                   builder: (context, snapshot) {
                     var quote = json.decode(snapshot.data.toString());
-                    PageController controller = PageController();
+
                     return new PageView.builder(
                       itemBuilder: (BuildContext context, int index) {
+                        
                         return new PageView(
-                          controller: controller,
                           children: <Widget>[
                             new Container(
                               child: new Column(
@@ -164,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   new Padding(
                                     padding: const EdgeInsets.only(left: 19),
                                     child: Text(
-                                      "" + quote[index]['Quote'],
+                                      "" + quote[_index]['Quote'],
                                       style: TextStyle(
                                         fontSize: 30,
                                         color: Colors.white,
@@ -178,7 +191,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     padding: const EdgeInsets.only(
                                         left: 195.0, top: 25),
                                     child: Text(
-                                      "-" + quote[index]['Author'],
+                                      "-" + quote[_index]['Author'],
                                       style: TextStyle(
                                         letterSpacing: 1,
                                         color: Colors.white.withOpacity(0.50),
@@ -191,7 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         );
                       },
-                      physics: BouncingScrollPhysics(),
+                      physics: NeverScrollableScrollPhysics(),
                     );
                   },
                 ),
@@ -212,7 +225,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    //TODO: Fix PageController
+                    _random();
+                   
                   },
                   splashColor: Colors.yellow.shade400,
                 ),
