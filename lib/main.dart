@@ -3,6 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'gradients.dart';
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 
 void main() => runApp(MyApp());
 final greyColor = Color(0xff0d0d0d);
@@ -41,20 +42,22 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List data;
- var _index;
+  var _index;
 
-@override
+  @override
   void initState() {
     super.initState();
     _random();
   }
 
-void _random() {
-setState(() {
-  _index = Random(_index).nextInt(3000);
-});
+  void _random() {
+    setState(
+      () {
+        _index = Random(_index).nextInt(3000);
+      },
+    );
+  }
 
-}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,7 +161,7 @@ setState(() {
               left: 45,
               child: new Container(
                 width: 355,
-                height: 455,
+                height: 475,
                 child: new FutureBuilder(
                   future: DefaultAssetBundle.of(context)
                       .loadString('json/quotes.json'),
@@ -167,7 +170,6 @@ setState(() {
 
                     return new PageView.builder(
                       itemBuilder: (BuildContext context, int index) {
-                        
                         return new PageView(
                           children: <Widget>[
                             new Container(
@@ -219,16 +221,11 @@ setState(() {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
                   elevation: 10,
-                  color: Colors.black,
-                  child: new Icon(
-                    Icons.panorama_fish_eye,
-                    color: Colors.white,
-                  ),
+                  color: Colors.yellow.shade700,
+                  child: new Icon(Icons.panorama_fish_eye, color: Colors.black),
                   onPressed: () {
                     _random();
-                   
                   },
-                  splashColor: Colors.yellow.shade400,
                 ),
               ),
             ),
@@ -242,15 +239,18 @@ setState(() {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
                     elevation: 10,
-                    color: Colors.black,
+                    color: Colors.pink.shade200,
                     child: Icon(
-                      Icons.bookmark_border,
-                      color: Colors.white,
+                      Icons.share,
+                      color: Colors.black,
                     ),
                     onPressed: () {
                       //TODO: Add and View bookmark Option
+                      Share.text(
+                          'Share it on',
+                          'I haven’t failed. I’ve just found 10,000 ways that won’t work. \n\nCheck out this amazing app with 3000+ quotes. \t www.github.com/Imgkl/Quotes.',
+                          'text/plain');
                     },
-                    splashColor: Colors.red.shade400,
                   ),
                 ),
               ),
