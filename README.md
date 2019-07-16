@@ -2,15 +2,21 @@
 
 ## Description
 
-A flutter application which has a **3500+ quotes** to offer and motivate your daily life.
+A Flutter application which has a ***3500+ quotes*** to offer and motivate your daily life.
 
-## To be Done. 
+## Checklist
 
 - [x] Added JSON
 - [x] Shuffle Button
 - [x] Share Function
-- [ ] Minimize LoC
+- [x] Minimize LoC
 - [ ] Favorite Button Implementation
 - [ ] Tags
 - [ ] Saved State
 - [ ] Splash Screen
+- [ ] Google Ads
+- [ ] Push Notification
+
+## Contribution
+
+Feel free to contribute by issuing PR and if it is good, I'll merge it for sure.
