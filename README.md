@@ -4,6 +4,9 @@
 
 A Flutter application which has a ***3500+ quotes*** to offer and motivate your daily life.
 
+## Demo
+<img src="https://github.com/Imgkl/Quote./blob/master/mockup/demo.gif" height="500">
+
 ## Checklist
 
 - [x] Added JSON
