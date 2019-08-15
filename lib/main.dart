@@ -4,14 +4,16 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'gradients.dart';
+
 import 'package:esys_flutter_share/esys_flutter_share.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-    .then((_) {
-      runApp(new MyApp());
-    });
+      .then((_) {
+    runApp(new MyApp());
+  });
 }
+
 final greyColor = Color(0xff0d0d0d);
 final cardColor = Colors.red;
 
@@ -254,7 +256,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.black,
                       ),
                       onPressed: () {
-                        //TODO: Add and View bookmark Option
                         Share.text(
                             'Share it on',
                             'I haven’t failed. I’ve just found 10,000 ways that won’t work. \n\nCheck out this amazing app with 3000+ quotes. \t www.github.com/Imgkl/Quotes.',
