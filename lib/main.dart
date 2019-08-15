@@ -6,7 +6,12 @@ import 'dart:convert';
 import 'gradients.dart';
 import 'package:esys_flutter_share/esys_flutter_share.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+    .then((_) {
+      runApp(new MyApp());
+    });
+}
 final greyColor = Color(0xff0d0d0d);
 final cardColor = Colors.red;
 
