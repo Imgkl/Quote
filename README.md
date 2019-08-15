@@ -13,7 +13,7 @@ A Flutter application which has a ***3500+ quotes*** to offer and motivate your 
 - [ ] Favorite Button Implementation
 - [ ] Tags
 - [ ] Saved State
-- [ ] Splash Screen
+- [x] Splash Screen
 - [ ] Google Ads
 - [ ] Push Notification
 
