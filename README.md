@@ -6,7 +6,7 @@ A Flutter application which has a ***3500+ quotes*** to offer and motivate your 
 
 ## Demo
 <img src="https://github.com/Imgkl/Quote./blob/master/mockup/demo.gif" height="500">
-
+<img src="https://github.com/Imgkl/Quote./blob/master/mockup/demo.gif" height="500">
 ## Checklist
 
 - [x] Added JSON
