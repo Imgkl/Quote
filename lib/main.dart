@@ -78,9 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(left:30.0),
+                  padding: const EdgeInsets.only(left: 30.0),
                   child: Row(
-                    
                     children: <Widget>[
                       new Container(
                         child: Text(
@@ -122,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           color: Colors.white,
                                           fontFamily: "fontaa",
                                           fontWeight: FontWeight.bold,
-                                          letterSpacing: 2.25,
+                                          letterSpacing: 2,
                                         ),
                                       ),
                                     ),
