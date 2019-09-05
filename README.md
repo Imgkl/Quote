@@ -1,4 +1,4 @@
-# Quote.
+# Quote. [![Codemagic build status](https://api.codemagic.io/apps/5d7107b1166ac9000e7de115/5d7107b1166ac9000e7de114/status_badge.svg)](https://codemagic.io/apps/5d7107b1166ac9000e7de115/5d7107b1166ac9000e7de114/latest_build)
 
 ## Description
 
