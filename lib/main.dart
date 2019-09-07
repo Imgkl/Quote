@@ -4,7 +4,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
 import 'package:quotes/background.dart';
 import 'dart:convert';
-
 import 'package:share/share.dart';
 
 void main() {
@@ -179,7 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         onPressed: () {
                           Share.share(
-                              'Share it on',
+                            
                               'I haven’t failed. I’ve just found 10,000 ways that won’t work. \n\nCheck out this amazing app with 3000+ quotes. \t www.github.com/Imgkl/Quotes.');
                         },
                       ),
