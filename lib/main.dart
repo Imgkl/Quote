@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:quotes/background.dart';
 import 'dart:convert';
 
-import 'package:esys_flutter_share/esys_flutter_share.dart';
+import 'package:share/share.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
@@ -178,10 +178,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           color: Colors.black,
                         ),
                         onPressed: () {
-                          Share.text(
+                          Share.share(
                               'Share it on',
-                              'I haven’t failed. I’ve just found 10,000 ways that won’t work. \n\nCheck out this amazing app with 3000+ quotes. \t www.github.com/Imgkl/Quotes.',
-                              'text/plain');
+                              'I haven’t failed. I’ve just found 10,000 ways that won’t work. \n\nCheck out this amazing app with 3000+ quotes. \t www.github.com/Imgkl/Quotes.');
                         },
                       ),
                     ),
