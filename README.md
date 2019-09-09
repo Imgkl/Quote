@@ -20,6 +20,13 @@ A Flutter application which has a ***3500+ quotes*** to offer and motivate your 
 - [ ] Google Ads
 - [ ] Push Notification
 
+
+## Tested on
+
+##### Android: *Tested and build passed*
+##### iOS: *Buy me a Mac, so that I would be able to test my projects!*
+
+
 ## Contribution
 
 Feel free to contribute by issuing PR and if it is good, I'll merge it for sure.
