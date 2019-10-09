@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:quotes/background.dart';
 import 'dart:convert';
 import 'package:share/share.dart';
+import 'package:quotes/noglow.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
@@ -107,37 +108,44 @@ class _MyHomePageState extends State<MyHomePage> {
                         itemBuilder: (BuildContext context, int index) {
                           return new PageView(
                             children: <Widget>[
-                              new Container(
-                                child: new Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    new Padding(
-                                      padding: const EdgeInsets.only(left: 19),
-                                      child: Text(
-                                        "" + quote[_index]['Quote'],
-                                        style: TextStyle(
-                                          fontSize: 30,
-                                          color: Colors.white,
-                                          fontFamily: "fontaa",
-                                          fontWeight: FontWeight.bold,
-                                          letterSpacing: 2,
-                                        ),
+                              ScrollConfiguration(
+                                behavior: NoGlow(),
+                                child: Center(
+                                  child: SingleChildScrollView(
+                                    child: new Container(
+                                      child: new Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          new Padding(
+                                            padding: const EdgeInsets.only(left: 19),
+                                            child: Text(
+                                              "" + quote[_index]['Quote'],
+                                              style: TextStyle(
+                                                fontSize: 30,
+                                                color: Colors.white,
+                                                fontFamily: "fontaa",
+                                                fontWeight: FontWeight.bold,
+                                                letterSpacing: 2,
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 195.0, top: 25),
+                                            child: Text(
+                                              "-" + quote[_index]['Author'],
+                                              style: TextStyle(
+                                                letterSpacing: 1,
+                                                color: Colors.white.withOpacity(0.50),
+                                              ),
+                                            ),
+                                          )
+                                        ],
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 195.0, top: 25),
-                                      child: Text(
-                                        "-" + quote[_index]['Author'],
-                                        style: TextStyle(
-                                          letterSpacing: 1,
-                                          color: Colors.white.withOpacity(0.50),
-                                        ),
-                                      ),
-                                    )
-                                  ],
+                                  ),
                                 ),
-                              ),
+                              )
                             ],
                           );
                         },
