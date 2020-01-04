@@ -8,10 +8,9 @@ import 'package:share/share.dart';
 import 'package:quotes/noglow.dart';
 
 void main() {
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
+ 
     runApp(new MyApp());
-  });
+ 
 }
 
 final greyColor = Color(0xff0d0d0d);
@@ -50,6 +49,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   List data;
   var _index;
+
+  var quote;
 
   @override
   void initState() {
@@ -102,8 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     future: DefaultAssetBundle.of(context)
                         .loadString('json/quotes.json'),
                     builder: (context, snapshot) {
-                      var quote = json.decode(snapshot.data.toString());
-
+                      quote = json.decode(snapshot.data.toString());
                       return new PageView.builder(
                         itemBuilder: (BuildContext context, int index) {
                           return new PageView(
@@ -119,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           new Padding(
                                             padding: const EdgeInsets.only(left: 19),
                                             child: Text(
-                                              "" + quote[_index]['Quote'],
+                                                quote[_index]['Quote'],
                                               style: TextStyle(
                                                 fontSize: 30,
                                                 color: Colors.white,
@@ -186,8 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         onPressed: () {
                           Share.share(
-                            
-                              'I haven’t failed. I’ve just found 10,000 ways that won’t work. \n\nCheck out this amazing app with 3000+ quotes. \t www.github.com/Imgkl/Quotes.');
+                              "${this.quote[_index]['Quote']}\n\n - ${this.quote[_index]['Author']}");
                         },
                       ),
                     ),
