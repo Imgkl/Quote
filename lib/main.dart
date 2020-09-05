@@ -2,10 +2,10 @@ import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
-import 'package:quotes/background.dart';
+import 'package:quotes/widgets/background.dart';
 import 'dart:convert';
 import 'package:share/share.dart';
-import 'package:quotes/noglow.dart';
+import 'package:quotes/widgets/noglow.dart';
 
 void main() {
  

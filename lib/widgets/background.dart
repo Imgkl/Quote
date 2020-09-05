@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quotes/gradients.dart';
+import 'package:quotes/widgets/gradients.dart';
 import 'package:quotes/main.dart';
 
 Stack circle() {
