@@ -2,15 +2,17 @@ import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
+import 'package:quotes/services/notification.dart';
 import 'package:quotes/widgets/background.dart';
 import 'dart:convert';
 import 'package:share/share.dart';
 import 'package:quotes/widgets/noglow.dart';
 
-void main() {
- 
-    runApp(new MyApp());
- 
+void main() async{
+ WidgetsFlutterBinding.ensureInitialized();
+ await LocalNotifyPushService().init();
+ await LocalNotifyPushService().getQuoteString();
+ runApp(new MyApp());
 }
 
 final greyColor = Color(0xff0d0d0d);
@@ -46,7 +48,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
   List data;
   var _index;
 
@@ -54,14 +56,30 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
     super.initState();
-    _random();
+    random();
+    LocalNotifyPushService().getQuoteString();
   }
 
-  void _random() {
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed) {
+     LocalNotifyPushService().init();
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  void random() {
     setState(
       () {
-        _index = Random(_index).nextInt(3000);
+        _index = Random(_index).nextInt(4000);
       },
     );
   }
@@ -168,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: new Icon(Icons.panorama_fish_eye,
                             color: Colors.black),
                         onPressed: () {
-                          _random();
+                          random();
                         },
                       ),
                     ),
