@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:quotes/main.dart';
 
@@ -12,7 +11,7 @@ class LocalNotifyPushService {
   
   init() async {
     var initializationSettingsAndroid =
-        AndroidInitializationSettings("@mipmap/ic_launcher");
+        AndroidInitializationSettings("@drawable/notification");
     var initializationSettingsIOS = IOSInitializationSettings();
     var initSetttings = InitializationSettings(
         initializationSettingsAndroid, initializationSettingsIOS);
