@@ -33,7 +33,7 @@ class LocalNotifyPushService {
       0,
       "✨Here is an amazing quote.",
       getQuoteString(),
-      RepeatInterval.EveryMinute,
+      RepeatInterval.Hourly,
       platformChannelSpecifics,
     );
   }
