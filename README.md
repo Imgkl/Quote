@@ -18,7 +18,7 @@ A Flutter application which has a ***3500+ quotes*** to offer and motivate your 
 - [ ] Saved State
 - [x] Splash Screen
 - [ ] Google Ads
-- [ ] Push Notification
+- [x] Push Notification
 
 
 ## Tested on
