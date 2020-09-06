@@ -8,11 +8,11 @@ import 'dart:convert';
 import 'package:share/share.dart';
 import 'package:quotes/widgets/noglow.dart';
 
-void main() async{
- WidgetsFlutterBinding.ensureInitialized();
- await LocalNotifyPushService().init();
- await LocalNotifyPushService().getQuoteString();
- runApp(new MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await LocalNotifyPushService().init();
+  await LocalNotifyPushService().getQuoteString();
+  runApp(new MyApp());
 }
 
 final greyColor = Color(0xff0d0d0d);
@@ -32,7 +32,9 @@ class MyApp extends StatelessWidget {
 
         return widget;
       },
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+          visualDensity: VisualDensity.adaptivePlatformDensity),
       home: MyHomePage(
         title: 'quotes.',
       ),
@@ -48,7 +50,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
+class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   List data;
   var _index;
 
@@ -66,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
     if (state == AppLifecycleState.resumed) {
-     LocalNotifyPushService().init();
+      LocalNotifyPushService().init();
     }
   }
 
@@ -97,19 +99,16 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(left: 30.0),
+                  padding: const EdgeInsets.only(left: 20.0, top: 20),
                   child: Row(
                     children: <Widget>[
                       new Container(
-                        child: Text(
-                          "quote.",
-                          style: TextStyle(
-                            fontFamily: "appbar",
-                            fontSize: 45.0,
-                            color: Colors.white,
-                            // letterSpacing: 3.5,
-                          ),
-                        ),
+                        child: Text("quote.",
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline3
+                                .copyWith(
+                                    color: Colors.white, fontFamily: "appbar")),
                       ),
                     ],
                   ),
@@ -132,30 +131,43 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver{
                                   child: SingleChildScrollView(
                                     child: new Container(
                                       child: new Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: <Widget>[
                                           new Padding(
-                                            padding: const EdgeInsets.only(left: 19),
+                                            padding:
+                                                const EdgeInsets.only(left: 19),
                                             child: Text(
-                                                quote[_index]['Quote'],
-                                              style: TextStyle(
-                                                fontSize: 30,
-                                                color: Colors.white,
-                                                fontFamily: "fontaa",
-                                                fontWeight: FontWeight.bold,
-                                                letterSpacing: 2,
-                                              ),
+                                              quote[_index]['Quote'],
+                                              // style: TextStyle(
+                                              //   fontSize: 30,
+                                              //   color: Colors.white,
+                                              //   fontFamily: "fontaa",
+                                              //   fontWeight: FontWeight.bold,
+                                              //   letterSpacing: 2,
+                                              // ),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headline6
+                                                  .copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                    letterSpacing: 2,
+                                                      color: Colors.white,
+                                                      fontFamily: "fontaa"),
                                             ),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 195.0, top: 25),
                                             child: Text(
-                                              "-" + quote[_index]['Author'],
-                                              style: TextStyle(
-                                                letterSpacing: 1,
-                                                color: Colors.white.withOpacity(0.50),
-                                              ),
+                                              "- " + quote[_index]['Author'],
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .subtitle1
+                                                  .copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                      color: Colors.white,
+                                                      fontFamily: "fontaa")
                                             ),
                                           )
                                         ],
