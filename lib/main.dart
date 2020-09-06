@@ -139,13 +139,6 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                                                 const EdgeInsets.only(left: 19),
                                             child: Text(
                                               quote[_index]['Quote'],
-                                              // style: TextStyle(
-                                              //   fontSize: 30,
-                                              //   color: Colors.white,
-                                              //   fontFamily: "fontaa",
-                                              //   fontWeight: FontWeight.bold,
-                                              //   letterSpacing: 2,
-                                              // ),
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .headline6
